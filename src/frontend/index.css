@@ -1,0 +1,232 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== FONTS ===== */
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("/assets/fonts/CabinetGrotesk-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/assets/fonts/GeistMono-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sora";
+  src: url("/assets/fonts/Sora-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* NexusFX Dark Trading Theme */
+    /* Background: Deep navy-black */
+    --background: 0.12 0.015 250;
+    --foreground: 0.92 0.01 250;
+
+    /* Cards: slightly lighter navy */
+    --card: 0.16 0.018 248;
+    --card-foreground: 0.92 0.01 250;
+
+    /* Popover */
+    --popover: 0.18 0.02 248;
+    --popover-foreground: 0.92 0.01 250;
+
+    /* Primary: Electric cyan/teal — the trading accent */
+    --primary: 0.78 0.18 195;
+    --primary-foreground: 0.08 0.02 250;
+
+    /* Secondary */
+    --secondary: 0.22 0.025 248;
+    --secondary-foreground: 0.85 0.01 250;
+
+    /* Muted */
+    --muted: 0.2 0.02 248;
+    --muted-foreground: 0.55 0.02 248;
+
+    /* Accent: slightly brighter card */
+    --accent: 0.24 0.03 248;
+    --accent-foreground: 0.92 0.01 250;
+
+    /* Destructive: vivid red */
+    --destructive: 0.62 0.24 25;
+    --destructive-foreground: 0.98 0.005 25;
+
+    /* Border */
+    --border: 0.28 0.025 248;
+    --input: 0.22 0.02 248;
+    --ring: 0.78 0.18 195;
+
+    /* Semantic colors for trading */
+    --profit: 0.72 0.19 155;
+    --profit-muted: 0.72 0.14 155;
+    --loss: 0.62 0.22 25;
+    --loss-muted: 0.62 0.17 25;
+    --buy: 0.72 0.19 155;
+    --sell: 0.62 0.22 25;
+    --neon: 0.82 0.2 195;
+
+    /* Charts */
+    --chart-1: 0.78 0.18 195;
+    --chart-2: 0.72 0.19 155;
+    --chart-3: 0.62 0.22 25;
+    --chart-4: 0.75 0.2 290;
+    --chart-5: 0.8 0.18 60;
+
+    /* Sidebar */
+    --sidebar: 0.1 0.015 250;
+    --sidebar-foreground: 0.85 0.01 250;
+    --sidebar-primary: 0.78 0.18 195;
+    --sidebar-primary-foreground: 0.08 0.02 250;
+    --sidebar-accent: 0.18 0.02 248;
+    --sidebar-accent-foreground: 0.85 0.01 250;
+    --sidebar-border: 0.22 0.02 248;
+    --sidebar-ring: 0.78 0.18 195;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Sora", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: "Cabinet Grotesk", sans-serif;
+  }
+
+  .font-mono {
+    font-family: "Geist Mono", monospace;
+  }
+
+  .text-profit {
+    color: oklch(var(--profit));
+  }
+
+  .text-loss {
+    color: oklch(var(--loss));
+  }
+
+  .bg-profit-muted {
+    background-color: oklch(var(--profit-muted) / 0.15);
+  }
+
+  .bg-loss-muted {
+    background-color: oklch(var(--loss-muted) / 0.15);
+  }
+
+  .text-neon {
+    color: oklch(var(--neon));
+  }
+
+  .border-neon {
+    border-color: oklch(var(--neon) / 0.4);
+  }
+
+  .glow-neon {
+    box-shadow: 0 0 20px oklch(var(--neon) / 0.2), 0 0 40px oklch(var(--neon) / 0.05);
+  }
+
+  .glow-profit {
+    box-shadow: 0 0 20px oklch(var(--profit) / 0.2);
+  }
+
+  .glow-loss {
+    box-shadow: 0 0 20px oklch(var(--loss) / 0.2);
+  }
+
+  .card-glass {
+    background: oklch(var(--card) / 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid oklch(var(--border) / 0.6);
+  }
+
+  .ticker-bar {
+    background: linear-gradient(
+      135deg,
+      oklch(var(--card)),
+      oklch(0.14 0.018 248)
+    );
+  }
+
+  /* Grid background pattern */
+  .bg-grid {
+    background-image: 
+      linear-gradient(oklch(var(--border) / 0.3) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(var(--border) / 0.3) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: oklch(var(--background));
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(var(--border));
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(var(--muted-foreground));
+}
+
+/* Animations */
+@keyframes pulse-neon {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes ticker-slide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes price-flash-up {
+  0% { background-color: oklch(var(--profit) / 0); }
+  30% { background-color: oklch(var(--profit) / 0.25); }
+  100% { background-color: oklch(var(--profit) / 0); }
+}
+
+@keyframes price-flash-down {
+  0% { background-color: oklch(var(--loss) / 0); }
+  30% { background-color: oklch(var(--loss) / 0.25); }
+  100% { background-color: oklch(var(--loss) / 0); }
+}
+
+.animate-flash-up {
+  animation: price-flash-up 0.6s ease-out;
+}
+
+.animate-flash-down {
+  animation: price-flash-down 0.6s ease-out;
+}
+
+.animate-pulse-neon {
+  animation: pulse-neon 2s ease-in-out infinite;
+}
